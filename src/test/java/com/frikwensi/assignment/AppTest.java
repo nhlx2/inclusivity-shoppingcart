@@ -51,4 +51,19 @@ public class AppTest
 	assertEquals(cart.count(), 5);
 	assertEquals(cart.total(), 199.95);
     }
+
+    public void testAddAdditionalProductstoShoppingCart()
+    {
+	cart.add(dovesoap);
+	cart.add(dovesoap);
+	cart.add(dovesoap);
+	cart.add(dovesoap);
+	cart.add(dovesoap);
+	cart.add(dovesoap);
+	cart.add(dovesoap);
+	cart.add(dovesoap);
+
+	assertEquals(cart.count(), 8);
+	assertEquals(cart.total(), 319.92);
+    }
 }
