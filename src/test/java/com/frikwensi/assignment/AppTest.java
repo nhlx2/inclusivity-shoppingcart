@@ -15,10 +15,14 @@ public class AppTest
      */
     private Cart cart;
     private Product dovesoap;
+    private Product axedeo;
+    private double taxrate;
 
     protected void setUp() {
 	cart = new Cart();
 	dovesoap = new Product("Dove Soap", 39.99);
+	axedeo = new Product("Axe Deo", 99.99);
+	taxrate = 12.5;
     }
     /**
      * Create the test case
@@ -52,6 +56,9 @@ public class AppTest
 	assertEquals(cart.total(), 199.95);
     }
 
+    /**
+     * Step 2
+     */
     public void testAddAdditionalProductstoShoppingCart()
     {
 	cart.add(dovesoap);
@@ -62,8 +69,21 @@ public class AppTest
 	cart.add(dovesoap);
 	cart.add(dovesoap);
 	cart.add(dovesoap);
-
 	assertEquals(cart.count(), 8);
 	assertEquals(cart.total(), 319.92);
+    }
+
+    /**
+     * Step 3
+     */
+    public void testCalculateTaxRateofShoppingCartwithMultipleItems()
+    {
+	cart.add(dovesoap);
+	cart.add(dovesoap);
+	cart.add(axedeo);
+	cart.add(axedeo);
+	assertEquals(cart.count(), 4);
+	assertEquals(cart.total(), 279.96);
+	assertEquals(cart.total(taxrate), 314.96);
     }
 }

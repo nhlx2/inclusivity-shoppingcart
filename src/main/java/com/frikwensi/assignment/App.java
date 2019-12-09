@@ -1,11 +1,10 @@
 package com.frikwensi.assignment;
 
-import java.math.BigDecimal;
 import java.util.*;
 
 class Cart {
     private Product[] products;
-    Cart(){
+    Cart() {
 	products = new Product[0];
     }
     void add(Product prod) {
@@ -19,6 +18,11 @@ class Cart {
 	    total = total + products[i].getPrice();
 	}
 	return (double) Math.round(total * 100) / 100;
+    }
+    double total(double taxrate) {
+	double totalwithtax;
+	totalwithtax = total() + (taxrate/100)*total();
+	return (double) Math.round(totalwithtax * 100) / 100;
     }
     int count() { return products.length; }
 }
